@@ -9,7 +9,8 @@ CONFIG -= app_bundle
 
 SOURCES += \
         basecompany.cpp \
-        main.cpp
+        main.cpp \
+        n1company.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -17,4 +18,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    basecompany.h
+    basecompany.h \
+    n1company.h
