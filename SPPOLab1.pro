@@ -12,7 +12,8 @@ SOURCES += \
         main.cpp \
         n1company.cpp \
         n2company.cpp \
-        n3company.cpp
+        n3company.cpp \
+        singleton.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -23,4 +24,5 @@ HEADERS += \
     basecompany.h \
     n1company.h \
     n2company.h \
-    n3company.h
+    n3company.h \
+    singleton.h

@@ -13,5 +13,5 @@ N3Company::CompanyType N3Company::getCompanyType()
 
 double N3Company::getTaxes()
 {
-    return((2 * income_ + acreage_)/(nEmployees_ + 1/2 * acreage_));
+    return((income_ - acreage_)/(nEmployees_));
 }
