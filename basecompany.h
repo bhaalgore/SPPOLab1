@@ -33,8 +33,8 @@ QList<QString> getOwner();
 double getIncome();
 double getAcreage();
 int getEmployeesNumber();
-virtual CompanyType getCompanyType()=0;
 virtual double getTaxes()=0;
+virtual CompanyType getCompanyType()=0;
 virtual ~BaseCompany()=default;
 
 protected:
