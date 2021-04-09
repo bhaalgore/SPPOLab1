@@ -1,0 +1,36 @@
+#include <QCoreApplication>
+
+#include <QList>
+#include <QString>
+#include <iostream>
+
+#include "singleton.h"
+#include "n1company.h"
+#include "n2company.h"
+#include "n3company.h"
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+  QCoreApplication a(argc, argv);
+
+  try {
+      Singleton& companyList = Singleton::GetInstance();
+      
+      QList<QString> N1Company;
+      QList<QString> N2Company;
+      QList<QString> N2Company;
+      QList<QString> N1Company;
+      QList<QString> N1Company;
+      QList<QString> N1Company;
+      QList<QString> N1Company;
+      
+      
+  }  catch (QString error) {
+      cout<<error.toStdString()<<endl;
+  }
+    
+    
+    return a.exec();
+}
