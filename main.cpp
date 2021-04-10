@@ -17,7 +17,7 @@ void printDataByCertainType(BaseCompany::CompanyType cType)
     int size = CList.getSize();
     BaseCompany* pointer = nullptr;
 
-    std::cout << "TYPE" << cType << "companies data: \n";
+    std::cout << "TYPE " << cType << "companies data: \n";
     for(int ix = 0; ix < size; ix++){
         pointer = CList.getCompany(ix);
         if(pointer->getCompanyType() == cType){
@@ -32,14 +32,43 @@ void printDataByCertainType(BaseCompany::CompanyType cType)
             cout << "Income: " << pointer->getIncome() << endl;
             std::cout << "Acreage: " << pointer->getAcreage() << endl;
             std::cout << "Employees: " << pointer->getEmployeesNumber() << endl;
-            std::cout << "Tax: " << pointer->getTaxes() << endl;
+            std::cout << "Taxes: " << pointer->getTaxes() << endl;
             std::cout << "*****************************************************************************\n";
         }
     }
 
 }
 
+void printDataByCertainOwner(QString owner)
+{
+    Singleton& CList = Singleton::GetInstance();
+    int size = CList.getSize();
+    BaseCompany* pointer = nullptr;
 
+    cout << owner.toStdString() << " has companies named by: ";
+    for(int ix = 0; ix < size; ix++){
+        pointer = CList.getCompany(ix);
+               if(pointer->getOwner().contains(owner))
+               {
+                  cout << pointer->getCompanyName().toStdString() << " ";
+               }
+    }
+    std::cout << std::endl;
+   /* Singleton& companiesRegister = Singleton::GetInstance();
+       BaseCompany* company_ptr = nullptr;
+       int size = companiesRegister.getSize();
+
+       std::cout << owner.toStdString() << " owns: ";
+       for(int i = 0; i < size; i++)
+       {
+           company_ptr = companiesRegister.getCompany(i);
+           if(company_ptr->getOwner().contains(owner))
+           {
+               std::cout << company_ptr->getCompanyName().toStdString() << ", ";
+           }
+       }
+       std::cout << std::endl;*/
+}
 
 int main(int argc, char *argv[])
 {
@@ -58,7 +87,8 @@ int main(int argc, char *argv[])
 
       N1CompanyOwns.push_back(QString("N1Comp_owner1"));
       N1CompanyOwns.push_back(QString("N1Comp_owner2"));
-      N1CompanyOwns.push_back(QString("N1Comp_owner3"));
+      N1CompanyOwns.push_back(QString("special_owner"));
+
 
       companyList.addCompany(new N1Company(QString("CompanyNameN1"), N1CompanyOwns, 100, 250.55, 10));
 
@@ -70,7 +100,7 @@ int main(int argc, char *argv[])
       N3CompanyOwns.push_back(QString("N3Comp_owner1"));
       N3CompanyOwns.push_back(QString("N3Comp_owner2"));
       N3CompanyOwns.push_back(QString("N3Comp_owner3"));
-      N3CompanyOwns.push_back(QString("N3Comp_owner4"));
+      N3CompanyOwns.push_back(QString("special_owner"));
 
       companyList.addCompany(new N2Company(QString("CompanyNameN3"), N3CompanyOwns, 120.35, 50.65, 7));
 
@@ -95,16 +125,19 @@ int main(int argc, char *argv[])
       N7CompanyOwns.push_back(QString("N7Comp_owner1"));
       N7CompanyOwns.push_back(QString("N7Comp_owner2"));
       N7CompanyOwns.push_back(QString("N7Comp_owner3"));
-      N7CompanyOwns.push_back(QString("N7Comp_owner4"));
+      N7CompanyOwns.push_back(QString("special_owner"));
 
       companyList.addCompany(new N3Company(QString("CompanyNameN3"), N7CompanyOwns, 250.95, 210.60, 20));
 
       
-      printDataByCertainType(BaseCompany::Type1);
+      /*printDataByCertainType(BaseCompany::Type1);
 
       printDataByCertainType(BaseCompany::Type2);
 
-      printDataByCertainType(BaseCompany::Type3);
+      printDataByCertainType(BaseCompany::Type3);*/
+
+      printDataByCertainOwner("special_owner");
+
 
 
 
