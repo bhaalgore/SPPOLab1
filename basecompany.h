@@ -11,7 +11,7 @@ public:
 //enum
 enum CompanyType
 {
-Type1=1,
+Type1,
 Type2,
 Type3
 };

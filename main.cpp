@@ -17,7 +17,7 @@ void printDataByCertainType(BaseCompany::CompanyType cType)
     int size = CList.getSize();
     BaseCompany* pointer = nullptr;
 
-    std::cout << "TYPE " << cType << "companies data: \n";
+    std::cout << "TYPE " << cType +1 << "companies data: \n";
     for(int ix = 0; ix < size; ix++){
         pointer = CList.getCompany(ix);
         if(pointer->getCompanyType() == cType){
@@ -53,21 +53,51 @@ void printDataByCertainOwner(QString owner)
                   cout << pointer->getCompanyName().toStdString() << " ";
                }
     }
-    std::cout << std::endl;
-   /* Singleton& companiesRegister = Singleton::GetInstance();
-       BaseCompany* company_ptr = nullptr;
-       int size = companiesRegister.getSize();
+  cout << endl;
+}
 
-       std::cout << owner.toStdString() << " owns: ";
+void printAverageDataForAllTypes()
+{
+    Singleton& companiesRegister = Singleton::GetInstance();
+       BaseCompany* pointer = nullptr;
+       int size = companiesRegister.getSize();
+       int CTypes[3] = {0, 0, 0};
+       double IncomeCounter[3] = {0, 0, 0};
+       double AcreageCounter[3] = {0, 0, 0};
+       double TaxesCounter[3] = {0, 0, 0};
+       double EmployeesCounter[3] = {0, 0, 0};
+
        for(int i = 0; i < size; i++)
        {
-           company_ptr = companiesRegister.getCompany(i);
-           if(company_ptr->getOwner().contains(owner))
-           {
-               std::cout << company_ptr->getCompanyName().toStdString() << ", ";
-           }
+          pointer = companiesRegister.getCompany(i);
+
+           CTypes[pointer->getCompanyType()]++;
+           IncomeCounter[pointer->getCompanyType()] += pointer->getIncome();
+           AcreageCounter[pointer->getCompanyType()] += pointer->getAcreage();
+           EmployeesCounter[pointer->getCompanyType()] += pointer->getEmployeesNumber();
+           TaxesCounter[pointer->getCompanyType()] += pointer->getTaxes();
        }
-       std::cout << std::endl;*/
+
+       cout << "Type1 companies averages:\n";
+       cout << "Income: " << IncomeCounter[BaseCompany::Type1] / CTypes[BaseCompany::Type1] << endl;
+       cout << "Acreage: " << AcreageCounter[BaseCompany::Type1] / CTypes[BaseCompany::Type1] << endl;;
+       cout << "Employees: " << EmployeesCounter[BaseCompany::Type1] / CTypes[BaseCompany::Type1] << endl;;
+       cout << "Taxes: " << TaxesCounter[BaseCompany::Type1]/CTypes[BaseCompany::Type1] << endl;
+       cout << "********************************************************************************************\n";
+
+       cout << "Type2 companies averages:\n";
+       cout << "Income: " << IncomeCounter[BaseCompany::Type2] / CTypes[BaseCompany::Type2] << endl;
+       cout << "Acreage: " << AcreageCounter[BaseCompany::Type2] / CTypes[BaseCompany::Type2] << endl;;
+       cout << "Employees: " << EmployeesCounter[BaseCompany::Type2] / CTypes[BaseCompany::Type2] << endl;;
+       cout << "Taxes: " << TaxesCounter[BaseCompany::Type2]/CTypes[BaseCompany::Type2] << endl;
+       cout << "********************************************************************************************\n";
+
+       cout << "Type3 companies averages:\n";
+       cout << "Income: " << IncomeCounter[BaseCompany::Type3] / CTypes[BaseCompany::Type3] << endl;
+       cout << "Acreage: " << AcreageCounter[BaseCompany::Type3] / CTypes[BaseCompany::Type3] << endl;;
+       cout << "Employees: " << EmployeesCounter[BaseCompany::Type3] / CTypes[BaseCompany::Type3] << endl;;
+       cout << "Taxes: " << TaxesCounter[BaseCompany::Type3]/CTypes[BaseCompany::Type3] << endl;
+       cout << "********************************************************************************************\n";
 }
 
 int main(int argc, char *argv[])
@@ -134,9 +164,11 @@ int main(int argc, char *argv[])
 
       printDataByCertainType(BaseCompany::Type2);
 
-      printDataByCertainType(BaseCompany::Type3);*/
+      printDataByCertainType(BaseCompany::Type3);
 
-      printDataByCertainOwner("special_owner");
+      printDataByCertainOwner("special_owner");*/
+
+      printAverageDataForAllTypes();
 
 
 
