@@ -8,7 +8,7 @@ N3Company::N3Company(QString companyName, QList<QString> &owner, double income, 
 
 N3Company::CompanyType N3Company::getCompanyType()
 {
-    return CompanyType::Type1;
+    return CompanyType::Type3;
 }
 
 double N3Company::getTaxes()
